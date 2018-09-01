@@ -8,47 +8,47 @@ using System.Threading.Tasks;
 
 namespace Ecommerce.Services
 {
-    public class CategoryService
+    public class ProdutService
     {
 
-        public Category GetCategory(int ID)
+        public Product GetProduct(int ID)
         {
             using (var context = new ECContext())
             {
-               return context.Categories.Find(ID);
+               return context.Proudcts.Find(ID);
                
             }
         }
 
-        public List<Category> GetCategories()
+        public List<Product> GetProducts()
         {
             using (var context = new ECContext())
             {
-                return context.Categories.ToList();
+                return context.Proudcts.ToList();
 
             }
         }
-        public void SaveCategory(Category category)
+        public void SaveProduct(Product product)
         {
             using (var context = new ECContext())
             {
-                context.Categories.Add(category);
+                context.Proudcts.Add(product);
                 context.SaveChanges();
             }
         }
-        public void UpdateCategory(Category category)
+        public void UpdateProduct(Product product)
         {
             using (var context = new ECContext())
             {
-                context.Entry(category).State = System.Data.Entity.EntityState.Modified;
+                context.Entry(product).State = System.Data.Entity.EntityState.Modified;
                 context.SaveChanges();
             }
         }
-        public void DeleteCategory(Category category)
+        public void DeleteProduct(Product product)
         {
             using (var context = new ECContext())
             {
-                context.Entry(category).State = System.Data.Entity.EntityState.Deleted;
+                context.Entry(product).State = System.Data.Entity.EntityState.Deleted;
                 context.SaveChanges();
             }
         }

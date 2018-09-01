@@ -48,13 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProductService .cs" />
     <Compile Include="CategoryService.cs" />
-    <Compile Include="ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ecommerce.Database\Ecommerce.Database.csproj">
+      <Project>{336ACFC4-E911-4A62-AF6E-1A9C94612224}</Project>
+      <Name>Ecommerce.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ecommerce.Entities\Ecommerce.Entities.csproj">
+      <Project>{9CC85543-CFFC-45E6-B0BF-876310AF3B72}</Project>
+      <Name>Ecommerce.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,99 @@
+﻿@model List<Ecommerce.Entities.Product>
+@{
+    ViewBag.Title = "ProductTable";
+}
+
+<h2>ProductTable</h2>
+
+<div class="container-fluid">
+    <form action="" method="post">
+        <div class="row">
+                <div class="col-md-8">
+                 
+                    <div class="form-group">
+                       
+                        <label>Search</label>
+                        <input class="form-control" id="searchTxt" name="search" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>Action</label>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class=" btn btn-primary form-control" id="searchBtn" type="button">Search</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-danger form-control" id="newBtn" type="button">New</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+    </form>
+</div>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td>@product.Name</td>
+                        <td>@product.Price</td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+<script>
+    $("#searchBtn").click(function () {
+        debugger;
+        var searchValue = $("#searchTxt").val();
+        alert(searchValue);
+        $.ajax({
+            url: '/Product/ProductTable',
+            data: {
+
+                search: searchValue
+            })
+            .done(function (response) {
+                $("#TableContainer").html(response);
+
+
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorthrown) {
+
+                alert("FAIL");
+            });
+
+    });
+    $("#newBtn").click(function () {
+        $.ajax({
+            url: '/Product/Create',
+
+        })
+            .done(function (response) {
+                $("#actionContainer").html(response);
+
+
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorthrown) {
+
+                alert("FAIL");
+            });
+
+    });
+</script>
